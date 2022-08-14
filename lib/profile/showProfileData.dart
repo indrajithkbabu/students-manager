@@ -5,27 +5,28 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:studentsportal/db/functions/db_functions.dart';
+import 'package:studentsportal/db/model/datamodel.dart';
 import 'package:studentsportal/profile/addProfile.dart';
 import 'package:studentsportal/profile/listProfileData.dart';
+import 'package:studentsportal/profile/updateProfile.dart';
 
 class showProfileData extends StatelessWidget {
 
-final String name;
-final String age;
-final String branch;
-final String phone;
-var pic;
+// final String name;
+// final String age;
+// final String branch;
+// final String phone;
+//var pic;
+StudentModel data;
 final int index;
 
 
   showProfileData({
     Key? key,
-    required this.name,
-    required this.age,
-    required this.branch,
-    required this.phone,
-    required this.pic, required this.index,
+    required this.data,
+    required this.index,
   }) : super(key: key);
 
   @override
@@ -89,7 +90,7 @@ final int index;
                             decoration: BoxDecoration(
                               color: Colors.black,
                               image: DecorationImage(
-                                image: FileImage(File(pic)),
+                                image: FileImage(File(data.img)),
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -106,23 +107,23 @@ final int index;
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Name     : $name',
+                              Text('Name     : ${data.name}',
                               style: TextStyle(
                                 fontSize: 25,
                               ),
                               ),
                                SizedBox(height: 25,),
-                              Text('Age         : $age',
+                              Text('Age         : ${data.age}',
                                style: TextStyle(
                                 fontSize: 25,
                               ),),
                                   SizedBox(height: 25,),
-                              Text('Branch    :  $branch',
+                              Text('Branch    :  ${data.branch}',
                                style: TextStyle(
                                 fontSize: 25,
                               ),),
                                 SizedBox(height: 25,),
-                              Text('Phone     : $phone',
+                              Text('Phone     : ${data.phone}',
                                style: TextStyle(
                                 fontSize: 25,
                               ),),
@@ -145,7 +146,7 @@ final int index;
                         ),
                         label: Text('Edit details', style: TextStyle(color:Colors.blueGrey ),),
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>addProfile()));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>updateProfile(data: data,)));
                         }),
                         ElevatedButton.icon(
                         style: ButtonStyle(
@@ -211,3 +212,4 @@ Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>listProfileData()))
     },
   );
 }
+

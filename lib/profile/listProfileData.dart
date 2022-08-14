@@ -95,7 +95,7 @@ class listProfileData extends StatelessWidget {
 
                             onTap: () {
                               Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (ctx) => showProfileData(name: data.name, age:data.age, branch:data.branch, phone: data.phone, pic: data.img, index: index,)));
+                                  MaterialPageRoute(builder: (ctx) => showProfileData( index: index, data: data,)));
                             },
 
 
