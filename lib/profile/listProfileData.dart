@@ -81,9 +81,9 @@ class listProfileData extends StatelessWidget {
                              final data =studentList[index];
                           return ListTile(
                             title: Text(data.name),
-                            trailing: IconButton(onPressed: (){
+                            trailing: IconButton(onPressed: ()async{
 
-                              deleteStudent(index);
+                             await deleteStudent(index);
 
 
                              
@@ -105,7 +105,7 @@ class listProfileData extends StatelessWidget {
                              // backgroundColor: Colors.black45,
                              backgroundImage: FileImage(File(data.img)),
                             ),
-                      //      title: Text(enteredDataList[index]),
+                      
                           );
                         },
                         separatorBuilder: (context, index) {
