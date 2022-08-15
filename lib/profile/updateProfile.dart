@@ -39,13 +39,13 @@ class _updateProfileState extends State<updateProfile> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    if (_nameController.text.isEmpty) {
+   if (_phoneController.text.isEmpty) {
       _nameController.text = widget.data.name;
       _ageController.text = widget.data.age;
       _branchController.text = widget.data.branch;
       _phoneController.text = widget.data.phone;
       photo = widget.data.img;
-    }
+   }
 
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 16, 65, 76),
@@ -215,27 +215,28 @@ class _updateProfileState extends State<updateProfile> {
     final _branch = _branchController.text.trim();
     final _phone = _phoneController.text.trim();
     //snackbar
-    if (_name.isEmpty ||
-        _age.isEmpty ||
-        _branch.isEmpty ||
-        _phone.isEmpty 
-        ) {
-      ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
-          behavior: SnackBarBehavior.floating,
-          margin: EdgeInsets.all(15),
-          backgroundColor: Colors.red,
-          content: Text('Update complete details')));
-    }
-    else if(pic==null){
-       ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
-          behavior: SnackBarBehavior.floating,
-          margin: EdgeInsets.all(15),
-          backgroundColor: Colors.red,
-          content: Text('Update photo')));
+    // if (_name.isEmpty ||
+    //     _age.isEmpty ||
+    //     _branch.isEmpty ||
+    //     _phone.isEmpty 
+    //     ) {
+    //   ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
+    //       behavior: SnackBarBehavior.floating,
+    //       margin: EdgeInsets.all(15),
+    //       backgroundColor: Colors.red,
+    //       content: Text('Update complete details')));
+    // }
+    // else if(pic==null){
+    //    ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
+    //       behavior: SnackBarBehavior.floating,
+    //       margin: EdgeInsets.all(15),
+    //       backgroundColor: Colors.red,
+    //       content: Text('Update photo')));
 
-    } else {
+    // }
+    //  else {
       final _student = StudentModel(
-          name: _name, age: _age, branch: _branch, phone: _phone, img: pic);
+          name: _name, age: _age, branch: _branch, phone: _phone, img: photo);
       // Navigator.pushReplacement(
       //   ctx,
       //   MaterialPageRoute(builder: (context) => listProfileData()),
@@ -245,4 +246,4 @@ class _updateProfileState extends State<updateProfile> {
       updateStudent(widget.index,_student);
     }
   }
-}
+// }
